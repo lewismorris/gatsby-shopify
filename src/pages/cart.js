@@ -18,7 +18,7 @@ const Cart = () => {
 
       <h4>Your Cart</h4>
 
-      {cart.lineItems &&
+      {cart &&
         cart.lineItems.map(item => (
           <div key={item.id} style={{ marginBottom: 24 }}>
             <h3>{item.title}</h3>
