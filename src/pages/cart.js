@@ -18,24 +18,25 @@ const Cart = () => {
 
       <h4>Your Cart</h4>
 
-      {cart.lineItems.map(item => (
-        <div key={item.id} style={{ marginBottom: 24 }}>
-          <h3>{item.title}</h3>
-          <span style={{ marginRight: 16 }}>Type: {item.variant.title}</span>
-          <span style={{ marginRight: 16 }}>£{item.variant.price}</span>
-          <span style={{ marginRight: 16 }}>QTY: {item.quantity}</span>
-          <button onClick={() => removeItemFromCart(item.variant.id)}>
-            Remove
-          </button>
-        </div>
-      ))}
+      {cart.lineItems &&
+        cart.lineItems.map(item => (
+          <div key={item.id} style={{ marginBottom: 24 }}>
+            <h3>{item.title}</h3>
+            <span style={{ marginRight: 16 }}>Type: {item.variant.title}</span>
+            <span style={{ marginRight: 16 }}>£{item.variant.price}</span>
+            <span style={{ marginRight: 16 }}>QTY: {item.quantity}</span>
+            <button onClick={() => removeItemFromCart(item.variant.id)}>
+              Remove
+            </button>
+          </div>
+        ))}
 
       <div style={{ marginBottom: 32 }}>
         <h4>Total</h4>
-        <span>£{cart.totalPrice}</span>
+        <span>£{cart && cart.totalPrice}</span>
       </div>
 
-      <a href={cart.webUrl} rel="noopener noreferrer">
+      <a href={cart && cart.webUrl} rel="noopener noreferrer">
         Checkout Now →
       </a>
     </Layout>
